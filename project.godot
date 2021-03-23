@@ -16,7 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="McDJumpGame"
-config/icon="res://icon.png"
+config/icon="res://art/icon.png"
+
+[display]
+
+window/size/width=512
+window/size/height=288
 
 [rendering]
 
