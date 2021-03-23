@@ -53,6 +53,7 @@ margin_bottom = 72.0
 text = "Cancel"
 
 [node name="GachaDialog" type="Panel" parent="."]
+visible = false
 margin_left = 0.943878
 margin_right = 150.944
 margin_bottom = 200.0
