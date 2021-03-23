@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://art/GachaSystem/GachaScreen.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/GachaScripts/GachaGachaButton.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/GachaScripts/GachaSystem.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 0.0980392 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 0.392157 )
+
+[node name="GachaScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GachaScreen" type="Sprite" parent="."]
+position = Vector2( 1, 0 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="ButtonVBox" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = -100.0
+margin_right = 200.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GachaGacha" type="Button" parent="ButtonVBox"]
+margin_top = 28.0
+margin_right = 400.0
+margin_bottom = 48.0
+text = "GACHA!"
+script = ExtResource( 2 )
+
+[node name="Cancel" type="Button" parent="ButtonVBox"]
+margin_top = 52.0
+margin_right = 400.0
+margin_bottom = 72.0
+text = "Cancel"
+
+[node name="GachaDialog" type="Panel" parent="."]
+margin_left = 0.943878
+margin_right = 150.944
+margin_bottom = 200.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GachaVBox" type="VBoxContainer" parent="GachaDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_constants/separation = 4
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot" type="Panel" parent="GachaDialog/GachaVBox"]
+margin_right = 142.0
+margin_bottom = 109.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Label" type="Label" parent="GachaDialog/GachaVBox"]
+margin_top = 113.0
+margin_right = 142.0
+margin_bottom = 168.0
+size_flags_vertical = 3
+custom_styles/normal = SubResource( 1 )
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Button" type="Button" parent="GachaDialog/GachaVBox"]
+margin_top = 172.0
+margin_right = 142.0
+margin_bottom = 192.0
+text = "Okay"
+
+[node name="Gacha" type="Node" parent="."]
+script = ExtResource( 4 )

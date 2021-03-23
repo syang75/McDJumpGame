@@ -1,0 +1,10 @@
+{
+  "BlueSquare": {
+    "Sprite": "res://art/player_default.png",
+    "Speed": 5
+  },
+  "RedSquare": {
+    "Sprite": "res://art/player_default.png",
+    "Speed": 6
+  }
+}
