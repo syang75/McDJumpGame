@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="McDJumpGame"
+run/main_scene="res://Main.tscn"
 config/icon="res://art/icon.png"
 
 [display]
