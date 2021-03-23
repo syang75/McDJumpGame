@@ -7,7 +7,7 @@ var velocity = Vector2()
 var jumping = false
 
 func get_input():
-	var jump = Input.is_action_just_pressed('ui_up')
+	var jump = Input.is_action_just_pressed('ui_accept')
 
 	if jump and is_on_floor():
 		jumping = true
