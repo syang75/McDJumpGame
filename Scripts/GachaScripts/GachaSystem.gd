@@ -3,20 +3,32 @@ extends Node
 var gacha_processing = false
 var rng = RandomNumberGenerator.new()
 var gacha_luck = -1
-var gacha_list = ["blue", "red", "yellow"]
-onready var gacha_dialog = get_node("../GachaDialog")
+var gacha_character = null
+var character_class = preload("res://Scenes/Character.tscn")
+onready var gacha_dialog = get_node("GachaDialog")
+
+func _ready():
+	if gacha_dialog.visible == true:
+		gacha_dialog.visible = false
+	get_node("ButtonVBox/GachaGacha").connect("pressed", self, "gacha_summoning")
+	get_node("ButtonVBox/Cancel").connect("pressed", self, "pressed_cancel")
 
 func gacha_summoning():
-	var gacha_index_max = gacha_list.size() - 1
-	gacha_processing = true
-	init_gacha_ui()
-	gacha_luck = rng.randi_range(0, gacha_index_max)
-	gacha_gacha()
-	gacha_processing = false
+	if !gacha_processing:
+		var gacha_index_max = CharacterImport.character_data.size() - 1
+		gacha_processing = true
+		init_gacha_ui()
+		gacha_luck = rng.randi_range(0, gacha_index_max)
+		gacha_character = character_class.instance()
+		gacha_character._init_with_index(gacha_luck)
+		gacha_gacha()
 	
 func gacha_gacha():
 	var gacha_text = "You've unlocked %s!"
-	gacha_dialog.get_node("GachaVBox/Label").text = gacha_text % gacha_list[gacha_luck]
+	var chara_name = gacha_character.get("gacha_name")
+
+	gacha_dialog.get_node("GachaVBox/Label").text = gacha_text % chara_name
+	gacha_dialog.get_node("GachaVBox/SlotContainer/Slot").add_child(gacha_character)
 	pass
 	
 func init_gacha_ui():
@@ -32,3 +44,9 @@ func init_gacha_ui():
 	
 func close_gacha():
 	gacha_dialog.visible = false
+	gacha_processing = false
+	
+func pressed_cancel():
+	if !gacha_processing:
+		get_tree().change_scene("res://Scenes/StartScreen.tscn")
+	

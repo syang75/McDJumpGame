@@ -1,10 +1,12 @@
 {
   "BlueSquare": {
-    "Sprite": "res://art/player_default.png",
-    "Speed": 5
+    "Img": "res://art/player_default.png",
+    "Speed": 5,
+    "Jump": 2
   },
   "RedSquare": {
-    "Sprite": "res://art/player_default.png",
-    "Speed": 6
+    "Img": "res://art/enemy1.png",
+    "Speed": 6,
+    "Jump": 2
   }
 }
